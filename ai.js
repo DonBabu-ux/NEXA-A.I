@@ -1,51 +1,61 @@
-/* =========================
-   AI UTILITIES
-   ========================= */
-
-function createSummary(text) {
-  if (!text) return "No content to summarize.";
-
-  const sentences = text
-    .split(/[\.\!\?]\s/)
-    .filter(s => s.length > 0);
-
-  return "Summary: " + sentences.slice(0, 3).join(". ");
+// Helper: POST data to backend with error handling
+async function postData(url = "", data = {}) {
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    return { result: `Error: ${error.message}` };
+  }
 }
 
-window.summarizeFile = function () {
+// === Summarize ===
+window.summarizeFile = async function () {
   const fileInput = document.getElementById("uploadFile");
-  const textarea = document.getElementById("researchInput");
-  const result = document.getElementById("summaryResult");
+  const summaryResult = document.getElementById("summaryResult");
+  const btn = document.querySelector("button[onclick='summarizeFile()']");
 
-  if (!result) return;
+  if (!fileInput.files.length) return alert("Please upload a file.");
+  const text = await fileInput.files[0].text();
 
-  if (fileInput?.files?.length) {
-    const reader = new FileReader();
-    reader.onload = e => result.textContent = createSummary(e.target.result);
-    reader.readAsText(fileInput.files[0]);
-  } else if (textarea?.value.trim()) {
-    result.textContent = createSummary(textarea.value);
-  } else {
-    alert("Upload a file or enter text");
-  }
+  btn.disabled = true;
+  summaryResult.textContent = "Generating summary...";
+  const data = await postData("http://localhost:3000/summarize", { text });
+  summaryResult.textContent = data.result;
+  btn.disabled = false;
 };
 
-window.humanizeText = function () {
+// === Humanize ===
+window.humanizeText = async function () {
   const textarea = document.getElementById("researchInput");
-  const output = document.getElementById("humanizedResult");
+  const humanizedResult = document.getElementById("humanizedResult");
+  const btn = document.querySelector("button[onclick='humanizeText()']");
 
-  if (!textarea?.value.trim()) return alert("Enter text");
+  if (!textarea.value.trim()) return alert("Enter text to humanize.");
 
-  output.textContent = textarea.value
-    .replace(/\s+/g, " ")
-    .replace(/([.?!])\s*/g, "$1\n")
-    .replace(/\b(i)\b/g, "I");
+  btn.disabled = true;
+  humanizedResult.textContent = "Processing text...";
+  const data = await postData("http://localhost:3000/humanize", { text: textarea.value });
+  humanizedResult.textContent = data.result;
+  btn.disabled = false;
 };
 
-window.researchAssist = function () {
+// === Research ===
+window.researchAssist = async function () {
   const topic = document.getElementById("researchQuery")?.value;
-  const box = document.getElementById("researchResult");
+  const resultBox = document.getElementById("researchResult");
+  const btn = document.querySelector("button[onclick='researchAssist()']");
 
-  if (!topic) return alert("Enter a topic");
-  box.textContent = `Research Insights: Demo insight for "${topic}"`;
+  if (!topic.trim()) return alert("Enter a topic.");
+
+  btn.disabled = true;
+  resultBox.textContent = "Fetching research insights...";
+  const data = await postData("http://localhost:3000/research", { topic });
+  resultBox.textContent = data.result;
+  btn.disabled = false;
 };
