@@ -1,3 +1,8 @@
+<script>
+  if (!localStorage.getItem("loggedInUser")) {
+    window.location.href = "login.html";
+  }
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,79 +130,3 @@
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-
-  const debugMode = true; // set to false for real login
-
-const user = localStorage.getItem("nexaUser");
-if (!user && !debugMode) {
-    window.location.href = "login.html";
-}
-
-// Show username (use "Guest" if debugMode)
-document.getElementById("userName").textContent = user || "Guest";
-    // Check if user is logged in
-    const user = localStorage.getItem("nexaUser");
-    if (!user) window.location.href = "login.html";
-
-    document.getElementById("userName").textContent = user;
-
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      localStorage.removeItem("nexaUser");
-      window.location.href = "login.html";
-    });
-  </script>
-</body>
-</html>
