@@ -1,3 +1,19 @@
+.result-box {
+  background: #111;
+  color: #0ff;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 50px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
 /* ===== GLOBAL RESET ===== */
 * {
   margin: 0;
@@ -432,3 +448,4 @@ footer button:hover {
   border: 1px solid rgba(0, 255, 204, 0.3);
   white-space: pre-wrap; /* preserves line breaks */
 }
+
