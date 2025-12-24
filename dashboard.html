@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXA AI Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="dashboard-header">
+  <div>
+    <h1>Welcome, <span id="userName">Student</span>!</h1>
+    <p>Your AI-powered learning assistant is ready.</p>
+  </div>
+
+  <!-- User Engagement Panel -->
+  <div class="user-gauges-panel">
+    <p><strong>Status:</strong> <span id="onlineStatus" class="online">Online</span></p>
+    <p><strong>Last Seen:</strong> <span id="lastSeen">Just now</span></p>
+    <div class="gauges-container">
+      <div class="gauge-card"><canvas id="dailyGauge" width="120" height="60"></canvas><p>Daily</p></div>
+      <div class="gauge-card"><canvas id="weeklyGauge" width="120" height="60"></canvas><p>Weekly</p></div>
+      
+    </div>
+  </div>
+</header>
+
+
+
+
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome, <span id="userName"></span>!</h1>
+    <p>Your AI-powered learning assistant is ready to help you achieve more.</p>
+  </header>
+
+  <!-- Services Grid -->
+  <section class="services-grid">
+
+    <!-- Upload & Summarize -->
+    <div class="service-card">
+      <h2>Upload & Summarize</h2>
+      <p>Upload your document and get a concise summary instantly.</p>
+      <input type="file" id="uploadFile">
+      <button onclick="summarizeFile()">Summarize</button>
+      <div class="result-box" id="summaryResult"></div>
+    </div>
+
+    <!-- Humanize / Rewrite Text -->
+    <div class="service-card">
+      <h2>Humanize / Rewrite</h2>
+      <p>Make your assignments or research text more natural and readable.</p>
+      <textarea id="researchInput" placeholder="Paste your text here..."></textarea>
+      <button onclick="humanizeText()">Humanize</button>
+      <div class="result-box" id="humanizedResult"></div>
+    </div>
+
+    <!-- Quick Research Assistant -->
+    <div class="service-card">
+      <h2>Research Assistant</h2>
+      <p>Ask about any topic and get instant insights.</p>
+      <input type="text" id="researchQuery" placeholder="Enter topic...">
+      <button onclick="researchAssist()">Get Insights</button>
+      <div class="result-box" id="researchResult"></div>
+    </div>
+
+    <!-- Saved Results -->
+    <div class="service-card">
+      <h2>Saved Results</h2>
+      <p>View or export your previous summaries and humanized text.</p>
+      <button onclick="showSaved()">Show Saved Results</button>
+      <div class="result-box" id="savedResults"></div>
+    </div>
+<div class="service-card">
+  <h2>Study Planner</h2>
+  <p>Track your weekly tasks and watch your progress in real time!</p>
+
+  <!-- Progress Gauge -->
+  <div class="gauge-container">
+    <canvas id="studyProgress" width="200" height="100"></canvas>
+    <p id="progressText">0% Completed</p>
+  </div>
+
+  <!-- Task Table -->
+  <table id="plannerTable">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Subject</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Task Input -->
+  <input type="text" id="plannerTask" placeholder="Task">
+  <input type="text" id="plannerSubject" placeholder="Subject">
+  <input type="date" id="plannerDate">
+  <select id="plannerStatus">
+    <option value="Pending">Pending</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+  </select>
+  <button onclick="addTask()">Add Task</button>
+</div>
+
+
+
+  </section>
+
+  <!-- Footer / Logout -->
+  <footer>
+    <button id="logoutBtn">Log Out</button>
+  </footer>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+  const debugMode = true; // set to false for real login
+
+const user = localStorage.getItem("nexaUser");
+if (!user && !debugMode) {
+    window.location.href = "login.html";
+}
+
+// Show username (use "Guest" if debugMode)
+document.getElementById("userName").textContent = user || "Guest";
+    // Check if user is logged in
+    const user = localStorage.getItem("nexaUser");
+    if (!user) window.location.href = "login.html";
+
+    document.getElementById("userName").textContent = user;
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("nexaUser");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

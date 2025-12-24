@@ -1,0 +1,434 @@
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Poppins, Arial, sans-serif;
+}
+
+/* ===== BODY BACKGROUND ===== */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #eafcff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ===== HEADINGS ===== */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: #b8fff6;
+}
+
+p {
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* ===== GLASS CARD BASE ===== */
+.language,
+.content,
+.features,
+.start,
+.form-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px 30px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== LANGUAGE SELECT ===== */
+.language select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: #eafcff;
+  font-size: 1rem;
+}
+
+.language option {
+  color: #000;
+}
+
+/* ===== ABOUT SECTION ===== */
+.content p {
+  margin-bottom: 12px;
+}
+
+/* ===== FEATURES ===== */
+.features ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.features li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  margin-top: 15px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #00c9a7, #1cb5e0);
+  color: #022c2c;
+  font-size: 1rem;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #7fffd4;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== FORMS (LOGIN & SIGNUP) ===== */
+.form-container {
+  max-width: 450px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 12px 0 6px;
+  font-weight: 500;
+}
+
+input {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.35);
+  color: #eafcff;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: rgba(234, 252, 255, 0.6);
+}
+
+/* ===== FORM BUTTON ===== */
+form button {
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .content,
+  .features,
+  .start,
+  .language {
+    padding: 20px;
+  }
+}
+
+/* PASSWORD FIELD WITH EYE */
+.password-box {
+  position: relative;
+}
+
+.password-box input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* LINKS BELOW FORMS */
+.link-text {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#strengthText {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+
+
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  color: #eafcff;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  opacity: 0.8;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* GRID LAYOUT */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* SERVICE CARDS */
+.service-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 25px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-card h2 {
+  color: #00fff0;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* INPUTS & TEXTAREAS */
+.service-card input,
+.service-card textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(0,0,0,0.3);
+  color: #eafcff;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  resize: vertical;
+}
+
+.service-card textarea {
+  min-height: 140px; /* Larger text area */
+}
+
+/* BUTTONS */
+.service-card button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #022c2c;
+  background: linear-gradient(135deg, #00c9a7, #1cb5e0);
+  transition: all 0.3s ease;
+}
+
+.service-card button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,255,255,0.4);
+}
+
+/* RESULTS BOX */
+.result-box {
+  width: 100%;
+  background: rgba(0,0,0,0.2);
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 10px;
+  min-height: 50px;
+  color: #eafcff;
+  font-size: 0.95rem;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+/* LOGOUT BUTTON */
+footer {
+  margin-top: 20px;
+}
+
+footer button {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+footer button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,105,0,0.5);
+}
+
+
+
+.gauge-container {
+  margin: 20px auto;
+  width: 200px;
+  text-align: center;
+}
+
+#gaugeText {
+  font-weight: bold;
+  color: #00ffcc;
+  margin-top: 10px;
+}
+
+.service-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  color: #eafcff;
+}
+
+.service-card th, .service-card td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.service-card th {
+  color: #00fff0;
+}
+
+
+.user-gauges-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,255,204,0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 15px;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  color: #eafcff;
+  font-size: 0.9rem;
+  z-index: 1000;
+}
+
+.user-gauges-panel p {
+  margin: 5px 0;
+}
+
+.online { color: #0f0; }
+.offline { color: #f00; }
+
+.gauges-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.gauge-card {
+  text-align: center;
+}
+.gauge-card p {
+  margin: 5px 0 0 0;
+  font-size: 0.8rem;
+}
+
+
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between; /* Pushes the panel to the right */
+  align-items: flex-start;        /* Align top */
+  padding: 20px;
+  position: relative; /* optional */
+}
+
+/* Remove absolute positioning from user-gauges-panel */
+.user-gauges-panel {
+  position: relative;  /* now flows naturally in the flex layout */
+  width: 280px;
+  background: rgba(0,255,204,0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  color: #eafcff;
+  font-size: 0.9rem;
+    
+};
+
+
+
+.result-box {
+  min-height: 80px;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  background: rgba(0, 255, 204, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  white-space: pre-wrap; /* preserves line breaks */
+}
