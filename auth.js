@@ -39,8 +39,8 @@ window.logIn = function (event) {
     .then(() => {
       window.location.href = "dashboard.html";
     })
-    .catch(error => {
-      alert("Invalid login credentials");
+    .catch(() => {
+      alert("Invalid email or password");
     });
 };
 
