@@ -53,6 +53,30 @@
     <p>2025 NEXA AI. All rights reserved. | Powered by <a href="lilbeelogics.vercel.app">LilBee Logics</a> </p>
     <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | Developer Don</p>
 </body>
+
+
+
+  <script>
+function updateCountdown(){
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const christmas = new Date(`January 1, ${currentYear} 00:00:00`);
+  if(now > christmas) christmas.setFullYear(currentYear + 1);
+  const diff = christmas - now;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+  const mins = Math.floor((diff / (1000*60)) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('christmas-countdown').textContent =
+    `🎄 ${days}d ${hours}h ${mins}m ${secs}s until New year 🎉!🎈`;
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+  </script>
 <script src="auth.js"></script>
 <script src="firebase.js"></script>
 </html>
